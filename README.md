@@ -71,6 +71,18 @@ qgis-issue-42063-qgisserver1-1  | 10:47:36 INFO Server[25]: Request finished in 
 I double check that by sniffing http traffic with wireshark.
 
 
-Looking in the code, it looked to me that 
+Looking in the code, it looked to me that :
 
+https://github.com/elpaso/QGIS/blob/7411e9bbb009402cff6eb2a4bb695eab1b5c33f8/src/core/layertree/qgslayertreemodellegendnode.cpp#L1265
+
+is called asynchronously
+
+from somewhere around
+https://github.com/qgis/QGIS/blob/master/src/server/services/wms/qgswmsgetlegendgraphics.cpp
+
+https://github.com/qgis/QGIS/blob/master/src/server/services/wms/qgswmsrenderer.cpp
+
+
+Linked with:
+https://github.com/3liz/lizmap-web-client/issues/1571
 
