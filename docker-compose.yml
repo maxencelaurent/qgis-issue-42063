@@ -1,0 +1,28 @@
+version: '3'
+services:
+
+  qgisserver1:
+    image: "qgis/qgis-server:3.36.1-lunar"
+    environment:
+      QGIS_SERVER_LOG_LEVEL: 0
+    volumes:
+     # Override defautl nginx condif (remove "internal" directive from qgis)
+     # - './conf/qgis-nginx.conf:/etc/nginx/nginx.conf'
+     - './qgis_projects_1:/io/data'
+    ports:
+      - 8080:80
+    restart: unless-stopped
+
+
+  qgisserver2:
+    image: "qgis/qgis-server:3.36.1-lunar"
+    environment:
+      QGIS_SERVER_LOG_LEVEL: 0
+    volumes:
+     # Override defautl nginx condif (remove "internal" directive from qgis)
+     # - './conf/qgis-nginx.conf:/etc/nginx/nginx.conf'
+     - './qgis_projects_2:/io/data'
+    ports:
+      - 8081:80
+    restart: unless-stopped
+
